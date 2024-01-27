@@ -1,0 +1,13 @@
+<!-- webApp/templates/webApp/delete_dummy_record.html -->
+
+{% extends 'webApp/base.html' %}
+
+{% block content %}
+    <h2>Delete Dummy Record</h2>
+    <p>Are you sure you want to delete "{{ dummy_record.name }}"?</p>
+    <form method="post" action="{% url 'delete-dummy-record' dummy_record.pk %}">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+        <a href="{% url 'home' %}">Cancel</a>
+    </form>
+{% endblock %}

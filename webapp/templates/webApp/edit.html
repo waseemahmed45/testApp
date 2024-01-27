@@ -1,0 +1,14 @@
+<!-- webApp/templates/webApp/edit_dummy_record.html -->
+
+{% extends 'webApp/base.html' %}
+
+{% block title %}Edit{% endblock %}
+
+{% block content %}
+    <h2>Edit Dummy Record</h2>
+    <form method="post" action="{% url 'edit-dummy-record' dummy_record.pk %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update Record</button>
+    </form>
+{% endblock %}

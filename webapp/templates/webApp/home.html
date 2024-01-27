@@ -1,17 +1,24 @@
-<!-- mywebapp/templates/mywebapp/home.html -->
+<!-- webApp/templates/webApp/home.html -->
 
-{% load static %}
+{% extends 'webApp/base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Web App</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
-</head>
-<body>
+{% block title %}Home{% endblock %}
+
+{% block content %}
     <h1>Welcome to My Web App</h1>
+
+    <h2>Dummy Records</h2>
+    <ul>
+        {% for record in dummy_records %}
+            <li>{{ record.name }} - {{ record.description }} 
+                (<a href="{% url 'edit-dummy-record' record.pk %}">Edit</a> |
+                <a href="{% url 'delete-dummy-record' record.pk %}">Delete</a>)
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'add-dummy-record' %}">Add Dummy Record</a>
+    
+    {% load static %}  <!-- Make sure this is at the top of the file -->
     <script src="{% static 'script.js' %}"></script>
-</body>
-</html>
+{% endblock %}

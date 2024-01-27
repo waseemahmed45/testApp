@@ -1,0 +1,12 @@
+<!-- webApp/templates/webApp/add_dummy_record.html -->
+
+{% extends 'webApp/base.html' %}
+
+{% block content %}
+    <h2>Add Dummy Record</h2>
+    <form method="post" action="{% url 'add-dummy-record' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Record</button>
+    </form>
+{% endblock %}
