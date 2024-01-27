@@ -10,10 +10,18 @@
     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
 </head>
 <body>
+    <header>
+        <div>Stock Profile</div>
+    </header>
+
     <div id="content">
         {% block content %}{% endblock %}
     </div>
     <!-- ... rest of your body content ... -->
     <script src="{% static 'script.js' %}"></script>
+
+    <footer>
+        <p>&copy; 2024 StockApp. All rights reserved.</p>
+    </footer>
 </body>
 </html>

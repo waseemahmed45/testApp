@@ -1,0 +1,25 @@
+<!-- webApp/templates/webApp/yahoo_stock.html -->
+
+{% extends 'webApp/base.html' %}
+
+{% block title %}Stock{% endblock %}
+
+{% block content %}
+    <div class="stock-container">
+        <h1>Stock Details for {{ symbol }}</h1>
+
+        {% if error %}
+            <p class="error-message">{{ error }}</p>
+        {% else %}
+            <h2>Details:</h2>
+            <ul>
+                <li><strong>Market Cap:</strong> {{ market_cap }}</li>
+                <li><strong>Last Close:</strong> {{ last_close }}</li>
+                <li><strong>Open:</strong> {{ open_price }}</li>
+                <li><strong>High:</strong> {{ high_price }}</li>
+                <li><strong>Low:</strong> {{ low_price }}</li>
+                <li><strong>Volume:</strong> {{ volume }}</li>
+            </ul>
+        {% endif %}
+    </div>
+{% endblock %}

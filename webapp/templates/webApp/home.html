@@ -5,7 +5,7 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <h1>Welcome to My Web App</h1>
+    <h1>Welcome to AI Stock Profile</h1>
 
     <h2>Dummy Records</h2>
     <ul>
@@ -13,12 +13,14 @@
             <li>{{ record.name }} - {{ record.description }} 
                 (<a href="{% url 'edit-dummy-record' record.pk %}">Edit</a> |
                 <a href="{% url 'delete-dummy-record' record.pk %}">Delete</a>)
+                <a href="{% url 'yahoo_stock' record.name %}">View</a>)
+
             </li>
         {% endfor %}
     </ul>
 
-    <a href="{% url 'add-dummy-record' %}">Add Dummy Record</a>
-    
+    <a href="{% url 'add-dummy-record' %}">Add More Stock</a>
+
     {% load static %}  <!-- Make sure this is at the top of the file -->
     <script src="{% static 'script.js' %}"></script>
 {% endblock %}
