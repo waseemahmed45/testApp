@@ -8,6 +8,8 @@ from .serializers import DummyRecordSerializer
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import DummyRecordForm
 import requests
+from django.contrib.auth.decorators import login_required
+
 
 class DummyRecordList(APIView):
     def get(self, request, format=None):
@@ -15,6 +17,7 @@ class DummyRecordList(APIView):
         serializer = DummyRecordSerializer(dummy_records, many=True)
         return Response(serializer.data)
 
+@login_required(login_url='/accounts/login/')
 def home(request):
     dummy_records = DummyRecord.objects.all()
     return render(request, 'webApp/home.html', {'dummy_records': dummy_records})
