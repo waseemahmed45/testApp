@@ -2,7 +2,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from .forms import RegistrationForm, LoginForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 from django.contrib.auth.views import PasswordResetView
 from .forms import CustomPasswordResetForm
@@ -26,7 +26,8 @@ def register(request):
 def user_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
-        print(form.is_valid())
+        print(request.POST)
+        print('Is form valid?', form.is_valid())
         if form.is_valid():
             cleaned_data = form.cleaned_data
             username = cleaned_data['username']
@@ -34,6 +35,7 @@ def user_login(request):
             user = authenticate(request, username=username, password=password)
 
             if user is not None:
+                print("login")
                 login(request, user)
                 return redirect('home')  # Change 'home' to your actual home view
             else:
@@ -48,3 +50,6 @@ def user_login(request):
 
     return render(request, 'registration/login.html', {'form': form})
 
+def user_logout(request):
+    logout(request)
+    return render(request, 'logout.html')

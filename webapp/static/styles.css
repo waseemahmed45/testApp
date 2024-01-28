@@ -6,10 +6,11 @@ body {
 }
 
 header {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 15px;
+    background-color: #464646;
     font-size: 30px;
 }
 
